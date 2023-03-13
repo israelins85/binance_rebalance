@@ -7,6 +7,10 @@ import configparser
 from pathlib import Path
 
 
+# Set up the portfolio and rebalance parameters
+portfolio = {"BTC": 0.50, "ICX": 0.30, "BNB": 0.2}
+rebalance_threshold = 0.06  # Rebalance when the difference between target and current allocation exceeds 10%
+
 api_key = None
 api_secret = None
 
@@ -60,10 +64,6 @@ if not load_settings():
 # Set up the Binance API client
 client = binance.Client(api_key=api_key,
                         api_secret=api_secret)
-
-# Set up the portfolio and rebalance parameters
-portfolio = {"BTC": 0.50, "ICX": 0.30, "BNB": 0.2}
-rebalance_threshold = 0.06  # Rebalance when the difference between target and current allocation exceeds 10%
 
 total_value = 0
 in_wallet_symbols_value = {}
